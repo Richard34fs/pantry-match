@@ -1,4 +1,4 @@
-const { getIngredientsFromDB, addIngredientToDB, updateIngredientFromDB, deleteIngredientFromDB} = require("../models/refrigeratorModal.js")
+const { getIngredientsFromDB, addIngredientToDB, updateIngredientFromDB, deleteIngredientFromDB} = require("../modals/refrigeratorModal.js")
 
 const getIngredients = async(req, res) => {
   try{
