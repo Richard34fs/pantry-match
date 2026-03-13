@@ -1,5 +1,5 @@
 const { getIngredientsFromDB } = require("../modals/refrigeratorModal.js");
-const { getRecipesByIngredients } = require("../services/spoonacularService.js");
+const { getRecipesByIngredients, getRecipeDetails } = require("../services/spoonacularService.js");
 
 const getRecipes = async(req, res) =>{
   try {
@@ -14,4 +14,16 @@ const getRecipes = async(req, res) =>{
   };
 };
 
-module.exports = { getRecipes };
+const getSingleRecipe = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const recipeInfo = await getRecipeDetails(id);
+    res.status(200).json(recipeInfo);
+
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Failed to fetch recipes details" });
+  };
+};
+
+module.exports = { getRecipes, getSingleRecipe };
