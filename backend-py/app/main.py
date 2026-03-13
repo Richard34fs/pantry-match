@@ -2,7 +2,8 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import text
-from database import get_db
+from app.database import get_db
+from app.routers import refrigerator
 import secure
 
 app = FastAPI()
@@ -23,15 +24,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(refrigerator.router)
+
 @app.get("/")
 def read_root():
     return {"message": "API is runnig"}
-
-
-@app.get("/test-db")
-def test_database_connection(db: Session = Depends(get_db)):
-    try:
-        result = db.execute(text("SELECT 1")).scalar()
-        return {"status": "success", "message": "Connected to PostgreSQL via SQLAlchemy!", "result": result}
-    except Exception as e:
-        return {"status": "error", "message": str(e)}
