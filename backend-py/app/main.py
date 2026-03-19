@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import refrigerator
+from app import models
 
 app = FastAPI(title="Pantry Match API", version="1.0.0")
 
