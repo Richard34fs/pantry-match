@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from app.routers import user
 from app.routers import refrigerator
 from app import models
 
@@ -18,3 +20,4 @@ def root():
     return {"message": "API is online and running"}
 
 app.include_router(refrigerator.router)
+app.include_router(user.router)

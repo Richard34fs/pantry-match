@@ -19,7 +19,7 @@ def delete_a_ingredient(item_id: int, db: Session = Depends(get_db)):
     deleted_item = crud_refrigerator.delete_ingredient(db, item_id)
     
     if not deleted_item:
-        raise HTTPException(status_code=404, detail="Ingrediente não encontrado na geladeira.")
+        raise HTTPException(status_code=404, detail="Ingredient not founded.")
     return None
 
 @router.put("/{item_id}", response_model=IngredientResponse)
@@ -27,5 +27,5 @@ def update_a_ingredient(item_id: int, ingredient: IngredientCreate, db: Session 
     updated_item = crud_refrigerator.update_ingredient(db, item_id, ingredient)
     
     if not updated_item:
-        raise HTTPException(status_code=404, detail="Ingrediente não encontrado na geladeira.")
+        raise HTTPException(status_code=404, detail="Ingredient not founded.")
     return updated_item
