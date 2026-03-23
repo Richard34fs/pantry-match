@@ -3,7 +3,6 @@ from decimal import Decimal
 
 class IngredientCreate(BaseModel):
 
-    user_id: int = Field(alias="userId")
     ingredient: str = Field(alias="ingredientName", min_length=1)
     quantity: Decimal = Field(gt=0)
     unit_measurement: str = Field(alias="unitMeasurement", min_length=1)
