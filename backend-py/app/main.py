@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers import user
 from app.routers import auth
 from app.routers import refrigerator
+from app.routers import recipe
+
 from app import models
 
 app = FastAPI(title="Pantry Match API", version="1.0.0")
@@ -23,3 +25,4 @@ def root():
 app.include_router(refrigerator.router)
 app.include_router(user.router)
 app.include_router(auth.router)
+app.include_router(recipe.router)
