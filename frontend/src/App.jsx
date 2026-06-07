@@ -1,13 +1,23 @@
-import './index.css';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Login from './pages/Login';
 import Refrigerator from './pages/Refrigerator';
-import Recipes from './pages/Recipes.jsx';
-function App() {
+import PrivateRoute from './components/PrivateRoute';
+
+export default function App(){
   return (
-    <div>
-      <h1>Pantry-Match</h1>
-      <Recipes />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route 
+          path="/refrigerator" 
+          element={
+            <PrivateRoute>
+              <Refrigerator />
+            </PrivateRoute>
+          } 
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;

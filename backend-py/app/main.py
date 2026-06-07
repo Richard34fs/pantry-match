@@ -12,7 +12,7 @@ app = FastAPI(title="Pantry Match API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],# change to frontend domain when get in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
